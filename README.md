@@ -24,7 +24,22 @@ Le dossier clé de ce dépôt est `Keywords`.
 | `data/` | Fichiers de données (si nécessaire : CSV, JSON, etc.). | Non pertinent pour cette phase, mais peut être utilisé plus tard. |
 | `resources/` | Fichiers de configuration ou de ressources partagées. | Peut être utilisé pour définir des variables ou des librairies communes. |
 
------
+
+### 📦 Télécharger le Template de Projet
+
+Vous pouvez télécharger un **template de projet** prêt à l'emploi, illustrant l'utilisation des mots clés principaux de ce dépôt. Ce template montre comment intégrer et enchaîner les Keywords dans des scripts Robot Framework.
+
+👉 [Télécharger le template ProjetRobotAlfresco.zip](https://github.com/zidtalel/G1307/raw/main/ProjetRobotAlfresco.zip)
+
+**Mots clés utilisés dans l'exemple fourni :**
+
+- K43 : Ajouter un module dans un site
+- K44 : Menu Outils admin
+- K45 : Main menu
+- K46 : Login
+- K47 : Logout
+- K48 : Changer de disposition
+- K49 : Menu Action
 
 ### 📝 Conventions de Nommage et Localisation des Fichiers
 
