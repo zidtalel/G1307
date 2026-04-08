@@ -1,9 +1,10 @@
-# Les localisateurs
+# Administration des modèles
 menu_Actions1 = "//td[contains(@class,'nameColumn')]//span[text()='"
 menu_Actions2 ="']/ancestor::tr/td[contains(@class,'actionsColumn')]//span[text()='Actions']"
 menu_Action_Option1 = "//div[@role='region']//img[@title='"
 menu_Action_Option2 = "']"
-
+btn_Annuler_Supprimer_Modele = "//div[@role='dialog' and .//span[text()='Supprimer le modèle']]//span[@role='button' and .//span[text()='Annuler']]"
+btn_Annuler_Modifier_Modele = "//*[@id='CMM_EDIT_MODEL_DIALOG_CANCEL_label']"
 
 
 Menu Action
@@ -21,4 +22,4 @@ Menu Action
     Wait Until Element Is Visible    ${menu_Actions1}${vModele}${menu_Actions2}
     Click Element    ${menu_Actions1}${vModele}${menu_Actions2}
     Wait Until Element Is Visible    ${menu_Action_Option1}${vOption}${menu_Action_Option2}
-    Click Element    ${menu_Action_Option1}${vOption}${menu_Action_Option2}
+    Click Element    ${menu_Action_Option1}${vOption}${menu_Action_Option2
