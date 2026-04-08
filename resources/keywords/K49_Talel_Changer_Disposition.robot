@@ -1,4 +1,4 @@
-# Les localisateurs
+# Options de disposition du tableau de bord
 img_RoueDentee = "//div[@id='HEADER_CUSTOMIZE_USER_DASHBOARD']/img"
 btn_ChangerDisposition = "//*[@id='template_x002e_customise-layout_x002e_customise-user-dashboard_x0023_default-change-button-button']"
 btn_Mode = "//button[@id='template_x002e_customise-layout_x002e_customise-user-dashboard_x0023_default-select-button-dashboard"
@@ -19,6 +19,7 @@ Changer de disposition
     # Click sur la roue dentée
     Click Element    ${img_RoueDentee}
     # Click sur le bouton "Changer la disposition"
+    Wait Until Element Is Visible    ${btn_ChangerDisposition}
     Click Element    ${btn_ChangerDisposition}
     # Click sur le bouton "Sélectionner" de l'un des modes
     Run Keyword And Ignore Error    Click Element    ${btn_Mode}${vMode}']
