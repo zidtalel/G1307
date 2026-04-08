@@ -29,7 +29,7 @@ Le dossier clé de ce dépôt est `Keywords`.
 
 Vous pouvez télécharger un **template de projet** prêt à l'emploi, illustrant l'utilisation des mots clés principaux de ce dépôt. Ce template montre comment intégrer et enchaîner les Keywords dans des scripts Robot Framework.
 
-👉 [Télécharger le template ProjetRobotAlfresco.zip](https://github.com/zidtalel/G1307/main/ProjetRobotAlfresco.zip)
+👉 [Télécharger le template ProjetRobotAlfresco.zip](https://github.com/zidtalel/G1307/ProjetRobotAlfresco.zip)
 
 **Mots clés utilisés dans l'exemple fourni :**
 
