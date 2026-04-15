@@ -46,3 +46,4 @@ creation site
     Wait Until Element Is Visible    ${locator}    ${vTimeOut}
     # Vérifier que l'élément est bien visible (confirmation de la création)
     Element Should Be Visible    ${locator}
+	#fin loool
