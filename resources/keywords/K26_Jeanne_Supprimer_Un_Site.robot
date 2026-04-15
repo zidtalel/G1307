@@ -5,6 +5,8 @@ link_DeleteSiteOption="//tr[@id='HEADER_DELETE_SITE']"
 btn_ConfirmDeleteSite="//span[@id='ALF_SITE_SERVICE_DIALOG_CONFIRMATION_label' and text()='OK']"
 # Recherche de sites
 btn_FindSite="//button[@id='template_x002e_site-finder_x002e_site-finder_x0023_default-button-button']"
+div_EmptySiteList="//div[@class='yui-dt-liner' and text()='Saisir un terme de recherche pour trouver des sites']"
+link_Site="//a[text()='"
 
 Supprimer un site
     # vNomURLSite est l'identifiant du site tel qu'il apparaît dans son adresse URL (minuscules, chiffres et tirets seulement)
@@ -23,6 +25,8 @@ Supprimer un site
     # Confirmation de la suppression
     Wait Until Element Is Visible    ${btn_ConfirmDeleteSite}
     Click Element    ${btn_ConfirmDeleteSite}
+    # Ajout d'un Sleep pour s'assurer que la suppression soit bien enregistrée avant les postconditions
+    Sleep    1
     # Postconditions
     # Vérification que le site a bien été supprimé
     # Navigation vers la page Recherche de sites
@@ -30,5 +34,6 @@ Supprimer un site
     # Clic sur bouton Rechercher
     Wait Until Element Is Visible    ${btn_FindSite}
     Click Element    ${btn_FindSite}
-    # Vérification que le site supprimé n'est pas visible
-    Element Should Not Be Visible    ${vNomSite}
+    # Vérification que le site supprimé n'est pas visible une fois que la liste des sites s'affiche
+    Wait Until Element Is Not Visible    ${div_EmptySiteList}
+    Element Should Not Be Visible    ${link_Site}${vNomSite}']
