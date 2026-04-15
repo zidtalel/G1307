@@ -10,7 +10,6 @@ radio_visibilite_listePrivee="//input[@id='CREATE_SITE_FIELD_VISIBILITY_CONTROL_
 btn_creer="//span[@id='CREATE_SITE_DIALOG_OK']"
 page_titre_site="//a[@class='alfresco-navigation-_HtmlAnchorMixin' and @title='NOM']"
 
-
 creation site
     # ${vNomSite}    : Nom affiché du site (ex: MonSite)
     # ${vTimeOut}    : Délai maximum d'attente des éléments (ex: 10s)
