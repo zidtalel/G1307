@@ -8,14 +8,12 @@ txt_Titre ="//*[@name='prop_cm_title']"
 txt_Description = "//*[@name='prop_cm_description']"
 btn_Creer = "//*[normalize-space()='Créer']"
 
-#Variables pour créer un fichier texte  
-${vNomFichier}    Essai
-#Variables pour le contenu du fichier texte
-${ContenuFichier}    Bonjour Ceci est un test
-#Variables pour le titre  du fichier texte
-${vTitre}    Mon fichier test
-#Variables pour la description du fichier texte
-${vDescription}    Description du fichier test
+# Variables pour créer un fichier texte
+# ${vNomFichier} : Variables pour créer un fichier texte  (ex: "Essai")
+# ${ContenuFichier} : Variables pour le contenu du fichier texte 
+# ${vTitre} : Variables pour le titre  du fichier texte
+# ${vDescription} : Variables pour la description du fichier texte
+
 
 Creer fichier text 
     [Arguments]    ${vNomFichier}    ${ContenuFichier}    ${vTitre}    ${vDescription}
