@@ -3,14 +3,16 @@ Library           SeleniumLibrary
 Variables         ../variables/global_variables.py
 
 *** Variables ***
+#Variables pour créer une page wiki
+# ${vTitre_Page}    :    Variable pour stocker le titre de la page wiki
+# ${vContenu_Page}  :    Variable pour stocker le contenu de la page wiki
+
 #Locators pour créer une page wiki
 ${input_WikiTitle}      //input[@name='pageTitle']
 ${frame_WikiContent}    //iframe[contains(@id,'_ifr')]
 ${body_WikiContent}     //body[@id='tinymce']
 ${btn_WikiSave}         //*[contains(text(),'Enregistrer') or contains(text(),'Save')]
-#Variables pour créer une page wiki
-# ${vTitre_Page}    :    Variable pour stocker le titre de la page wiki
-# ${vContenu_Page}  :    Variable pour stocker le contenu de la page wiki
+
 *** Keywords ***
 Créer une page wiki
     [Arguments]    ${vNom_Site}    ${vTitre_Page}    ${vContenu_Page}
