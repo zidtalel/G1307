@@ -1,0 +1,5 @@
+vBrowser = "Chrome"
+vURL= "http://localhost:8084"
+vUsername= "admin"
+vPassword = "87654321"
+TIMEOUT = "10"
