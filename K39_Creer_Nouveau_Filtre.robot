@@ -17,13 +17,6 @@ ${CONFIRM_SUPPR}    //span[@id='ALF_CRUD_SERVICE_DELETE_CONFIRMATION_DIALOG_CONF
 Creation nouveau filtre
     [Arguments]    ${vID}    ${vNom}    ${vEtat}    ${vProp}    ${vTri}    ${vNbMax}    ${vLongMin}    ${vNbResult}    ${vDispo}
 
-    # Login
-    Open Browser             ${vURL}          ${vBrowser}
-    Maximize Browser Window
-    Input Text               ${txt_UserName}  ${vUsername}
-    Input Text               ${txt_Password}  ${vPassword}
-    Click Element            ${btn_Login}
-    Wait Until Element Is Visible    ${lblTitle}    10s
 
     # Navigation
     Go To    ${vURL}/share/page/dp/ws/faceted-search-config
