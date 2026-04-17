@@ -61,7 +61,7 @@ Creation nouveau filtre
     Sleep                       1s
     Press Keys                  ${SELECT_TRI}    RETURN
     Sleep                       1s
-# Spinners via champ visible
+# champ visible
     Double Click Element        ${NB_MAX_FILTRE}
     Input Text                  ${NB_MAX_FILTRE}    ${vNbMax}
     Double Click Element        ${LONG_MIN}
