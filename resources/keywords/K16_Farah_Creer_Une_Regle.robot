@@ -20,7 +20,7 @@ btn_Creer="//button[normalize-space(text())='Créer']"
 
 
 
-Creer une regle
+#Creer une regle
     # Ce mot clé permet de créer une règle dans un dossier.
     # vNomDossier : dossier source
     # vNomRegle : nom de la règle
