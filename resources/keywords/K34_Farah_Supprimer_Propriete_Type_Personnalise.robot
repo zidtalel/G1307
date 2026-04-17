@@ -13,7 +13,7 @@ btn_Action_2="']/ancestor::tr//span[text()='Actions']"
 btn_Supprimer="//div[@class='dijitPopup Popup']//tr[@title='Supprimer']//td[@class='dijitReset dijitMenuItemLabel']"
 btn_Confirmer_Suppression="//div[contains(@class,'dijitDialog')]//span[normalize-space()='Supprimer']"
 
-Supprimer une propriete dans un type personnalise
+#Supprimer une propriete dans un type personnalise
 
     # Ce mot clé permet de supprimer une propriété dans un type personnalisé.
     # vNomModele : nom du modèle
