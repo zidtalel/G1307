@@ -11,7 +11,7 @@ ${NB_RESULT}        //div[@widgetid='FORM_HIT_THRESHOLD']//input[@role='spinbutt
 ${DISPO_FILTRE}          //table[@id='FORM_SCOPE_CONTROL']
 ${MENU_DISPO}            //td[contains(@id,'FORM_SCOPE_CONTROL_menu')]//td[normalize-space()='${vDispo}']
 ${BTN_ENREGISTRER}       //span[contains(@class,'dijitButtonText') and text()='Enregistrer']
-${BTN_SUPPRIMER}    xpath=//img[contains(@title,"Cliquez pour supprimer ''${vID}''")]
+${BTN_SUPPRIMER}    //img[contains(@title,"Cliquez pour supprimer ''${vID}''")]
 ${CONFIRM_SUPPR}    //span[@id='ALF_CRUD_SERVICE_DELETE_CONFIRMATION_DIALOG_CONFIRM_label']
 
 Creation nouveau filtre
