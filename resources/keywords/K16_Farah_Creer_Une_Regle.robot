@@ -12,7 +12,7 @@ input_Description="//textarea[@id='template_x002e_rule-edit_x002e_rule-edit_x002
 select_Quand="(//select[contains(@class,'config-name')])[1]"
 chk_Si_Criteres ="//input[@id='template_x002e_rule-edit_x002e_rule-edit_x0023_default-ruleConfigIfCondition-condition-checkbox']"
 chk_Sauf_Si_Criteres="//input[@id='template_x002e_rule-edit_x002e_rule-edit_x0023_default-ruleConfigUnlessCondition-condition-checkbox']"
-select_Action="//div[text()='Exécuter une action :']/../following-sibling::ul/li/div[@class='name']/select"
+select_Action ="//div[text()='Exécuter une action :']/../following-sibling::ul/li/div[@class='name']/select"
 btn_Selectionner="//button[text()='Sélectionner...']"
 btn_Fichiers_Partages="//button[contains(@id,'destinationDialog-shared-button')]"
 select_Fichier_1 = "//span[normalize-space(text())='"
