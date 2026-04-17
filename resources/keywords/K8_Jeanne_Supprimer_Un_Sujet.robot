@@ -4,7 +4,7 @@ link_FilterAll="//a[@class='filter-link filter0' and text()='Tout']"
 link_DeleteTopic1="//a[text()='"
 link_DeleteTopic2="']/ancestor::div[@class='node topic']/div/div/a[text()='Supprimer']"
 btn_ConfirmDeleteTopic="//button[text()='Supprimer']"
-div_DeleteTopicSuccess="//div[@id='message_c']"
+div_DeleteTopicSuccess="//div[@id='message_c' and @class='yui-panel-container yui-dialog shadow']"
 link_Topic="//a[text()='"
 
 Supprimer un sujet dans une discussion
@@ -13,13 +13,13 @@ Supprimer un sujet dans une discussion
     # vMessageSucces contient le texte exact du message de succès de la suppression du sujet
     [Arguments]    ${vNomURLSite}    ${vTitreSujet}    ${vMessageSucces}
     # Préconditions
-    # Un site possédant le module Discussions doit exister : utiliser les mot-clés K4 et K43
+    # Un site possédant le module Discussions (contenant au moins un sujet) doit exister : utiliser les mot-clés K4 et K43
     # Navigation vers la liste de discussions du site
     Go To    ${vURL}/share/page/site/${vNomURLSite}/discussions-topiclist
     # Clic sur le filtre "Tout"
     Wait Until Element Is Visible    ${link_FilterAll}
     Click Element    ${link_FilterAll}
-    # Clic sur le lien Supprimer du sujet à retirer
+    # Clic sur le lien "Supprimer" du sujet à retirer
     Wait Until Element Is Visible    ${link_DeleteTopic1}${vTitreSujet}${link_DeleteTopic2}
     Click Element    ${link_DeleteTopic1}${vTitreSujet}${link_DeleteTopic2}
     # Confirmation de la suppression
