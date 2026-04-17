@@ -43,7 +43,7 @@ Creation nouveau filtre
         Click Element    ${CHECKBOX_ACTIF}
     END
 
-    # Propriété (ComboBox Dojo - saisie + ARROW_DOWN + RETURN)
+    # Propriété 
     Scroll Element Into View    ${SELECT_PROP}
     Click Element               ${SELECT_PROP}
     Input Text                  ${SELECT_PROP}    ${vProp}
@@ -53,7 +53,7 @@ Creation nouveau filtre
     Press Keys                  ${SELECT_PROP}    RETURN
     Sleep                       1s
 
-    # Tri (dijitSelect - ARROW_DOWN + RETURN)
+    # Tri 
     Scroll Element Into View    ${SELECT_TRI}
     Click Element               ${SELECT_TRI}
     Sleep                       1s
