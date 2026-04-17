@@ -6,14 +6,9 @@ ${BTN_NOUVEAU_FILTRE}    //span[@id='CREATE_FACET_BUTTON_label']
 # Keywords
 
 Supprimer Filtre
-    [Arguments]    ${vID}    ${vNom}
+    [Arguments]    ${vID}    
 
-    Open Browser             ${vURL}          ${vBrowser}
-    Maximize Browser Window
-    Input Text               ${txt_UserName}  ${vUsername}
-    Input Text               ${txt_Password}  ${vPassword}
-    Click Element            ${btn_Login}
-    Wait Until Element Is Visible    ${lblTitle}              10s
+
     Go To                            ${vURL}/share/page/dp/ws/faceted-search-config
     Wait Until Element Is Visible    ${BTN_NOUVEAU_FILTRE}    10s
 
