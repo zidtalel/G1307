@@ -107,7 +107,7 @@ Valider Et Verifier Creation
     Wait Until Page Contains Element    ${link_JobInList_Part1}${vNomTache}${link_JobInList_Part2}    ${TIMEOUT}
 
 
-# --- MOT-CLÉ MAÎTRE MIS À JOUR ---
+
 Creer Une Tache De Replication Complete
     [Arguments]    ${vNom}    ${vDesc}    ${vDate}    ${vHeure}    ${vNombre}    ${vUnite}
     Click Element    ${btn_OuvrirFormulaire}
