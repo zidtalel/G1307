@@ -8,7 +8,10 @@ div_BlogListe = "//div[contains(@class, 'blog-postlist')]"
 
 # Alerte de confirmation 
 div_Alert = "//div[@id='prompt']"
-btn_ConfirmAlert = "//div[@id='prompt']//button[contains(text(),'Delete')]"
+# A modifier selon le langage du navigateur utilisé
+Angalis : Delete
+Francais : Supprimer 
+btn_ConfirmAlert = "//div[@id='prompt']//button[contains(text(),'Supprimer')]"
 
 Supprimer un article dans un blog
     # Ce mot clé permet de supprimer un article dans un blog

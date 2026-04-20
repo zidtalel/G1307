@@ -6,7 +6,10 @@ btn_DeleteJob = "//div[@class='job-buttons']/span/span/button[contains(@id,'dele
 
 # Alerte de confirmation 
 div_Alert = "//div[@id='prompt']"
-btn_ConfirmAlert = "//div[@id='prompt']//button[contains(text(),'Delete')]"
+# A modifier selon le langage du navigateur utilisé
+Angalis : Delete
+Francais : Supprimer 
+btn_ConfirmAlert = "//div[@id='prompt']//button[contains(text(),'Supprimer')]"
 
 Supprimer un tache de replication
     # Ce mot clé permet de supprimer une tache de replication sur Outils Admin
