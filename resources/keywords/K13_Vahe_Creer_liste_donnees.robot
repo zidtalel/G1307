@@ -11,13 +11,13 @@
 
 
 Creer liste de donnees
-    # ${vNom_Site} : nom du site dans lequel vous souhaitez ajouter une liste de données 
+    # ${vNomUrl_Site} : nom de Url(identifiant) du site dans lequel vous souhaitez ajouter une liste de données 
     # ${vtypeList} : correspond au type de liste que le site web permet de créer
     # ${vtxt_titre} : nom de la liste tel que vous souhaitez l’appeler
     # ${vtext_description} : description de la liste
-    [Arguments]    ${vNom_Site}    ${vtypeList}    ${vtxt_titre}    ${vtext_description}
+    [Arguments]    ${vNomUrl_Site}    ${vtypeList}    ${vtxt_titre}    ${vtext_description}
     #Diriger vers la page liste de données
-    Go To    ${vURL}/share/page/site/${vNom_Site}/data-lists
+    Go To    ${vURL}/share/page/site/${vNomUrl_Site}/data-lists
     Sleep    1s
     # Cliquer sur Nouvelle liste (au cas où il n’y a aucune liste et que le site web ouvre directement le formulaire pour une nouvelle liste)
     ${status}    ${value}=    Run Keyword And Ignore Error
