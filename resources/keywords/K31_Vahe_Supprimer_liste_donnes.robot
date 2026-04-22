@@ -7,11 +7,11 @@ btn_ConfirmSup = "//*[@id='yui-gen5-button']"
 
 
 Supprimer liste de donnees
-    # ${vNom_Site} : nom du site dans lequel vous souhaitez supprimer une liste de données 
+    # ${vNomUrl_Site} : nom de Url(identifiant) du site dans lequel vous souhaitez supprimer une liste de données 
     # ${vtxt_titre} : nom de la liste que vous souhaitez supprimer
-    [Arguments]    ${vtxt_titre}    ${vNom_Site}
+    [Arguments]    ${vtxt_titre}    ${vNomUrl_Site}
     # Diriger vers la page Liste de données
-    Go To    ${vURL}/share/page/site/${vNom_Site}/data-lists
+    Go To    ${vURL}/share/page/site/${vNomUrl_Site}/data-lists
     # Choisir la liste pour supprimer et confirmer
     Wait Until Element Is Visible    ${find_List1}${vtxt_titre}${find_List2}
     Mouse Over    ${find_List1}${vtxt_titre}${find_List2}
