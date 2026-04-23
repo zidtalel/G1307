@@ -1,19 +1,36 @@
 # Les localisateurs
-# --- NAVIGATION ---
+# --- NAVIGATION: OUTILS ADMIN ---
+link_AdminConsole = "xpath=//span[@id='HEADER_ADMIN_CONSOLE_text']"
+div_ToolsLink = "xpath=//div[contains(@class,'tool tools-link')]"
+link_ReplicationJobs = "xpath=//a[@href='replication-jobs']"
+
+# --- GESTION DES TÂCHES DE RÉPLICATION ---
 btn_OuvrirFormulaire = "xpath=//span[contains(@id, 'default-create')]//a"
+
 
 # --- SECTION 1: GÉNÉRAL ---
 txt_RepliName = "xpath=//input[contains(@id, 'prop_name')]"
 txt_RepliDescription = "xpath=//textarea[contains(@id, 'prop_description')]"
 
+
 # --- SECTION 2: CHARGE UTILE (Popup Object Finder) ---
 btn_PayloadSelect = "xpath=//div[contains(@id, 'payloadContainer')]//button"
 
-# Bouton PLUS (+) à gauche (XPath ultra-précis)
-btn_PlusDataDictionary = "xpath=//div[contains(@class, 'object-finder')]//*[text()='Data Dictionary']/ancestor::tr//a[contains(@class, 'add')]"
-
+# Nouveau XPath paramétrable divisé en deux parties pour accepter n'importe quel dossier
+btn_AddFolder_Part1 = "xpath=//div[contains(@class, 'object-finder')]//*[text()='"
+btn_AddFolder_Part2 = "']/ancestor::tr//a[contains(@class, 'add')]"
 
 btn_PopupOK = "xpath=//*[@id='alf-id0_payload-cntrl-ok-button']"
+
+
+# # --- SECTION 2: CHARGE UTILE (Popup Object Finder) ---
+# btn_PayloadSelect = "xpath=//div[contains(@id, 'payloadContainer')]//button"
+
+# # Bouton PLUS (+) à gauche (XPath ultra-précis)
+# btn_PlusDataDictionary = "xpath=//div[contains(@class, 'object-finder')]//*[text()='Data Dictionary']/ancestor::tr//a[contains(@class, 'add')]"
+
+
+# btn_PopupOK = "xpath=//*[@id='alf-id0_payload-cntrl-ok-button']"
 
 # --- SECTION 3: CIBLE DE TRANSFERT ---
 btn_TargetSelect = "xpath=//div[contains(@id, 'transferTargetContainer')]//button[text()='Sélectionner']"
@@ -49,6 +66,7 @@ link_JobInList_Part2 = "')]"
 
 
 
+*** Keywords ***
 # Ce mot-clé maître permet de créer une tâche de réplication complète de bout en bout.
 # Il orchestre l'appel aux sous-mots-clés pour effectuer les actions suivantes :
 # 1. Ouvrir le formulaire de création.
@@ -59,9 +77,9 @@ link_JobInList_Part2 = "')]"
 
 # --- BLOC NAVIGATION ---
 Naviguer Vers Replication
-    Click Element    xpath=//span[@id='HEADER_ADMIN_CONSOLE_text']
-    Wait Until Element Is Visible    xpath=//div[contains(@class,'tool tools-link')]    ${TIMEOUT}
-    Click Element    xpath=//a[@href='replication-jobs']
+    Click Element    ${link_AdminConsole}
+    Wait Until Element Is Visible    ${div_ToolsLink}    ${TIMEOUT}
+    Click Element    ${link_ReplicationJobs}
     Wait Until Element Is Visible    ${btn_OuvrirFormulaire}    ${TIMEOUT}
 
 # --- FORMULAIRE DÉCOMPOSÉ ---
@@ -70,21 +88,22 @@ Saisir Informations Generales
     Input Text    ${txt_RepliName}    ${vNom}
     Input Text    ${txt_RepliDescription}    ${vDesc}
 
-Choisir Charge Utile Data Dictionary
+Choisir Dossier Charge Utile
+    [Arguments]    ${vDossier}
     # 1. Ouvrir le sélecteur
     Wait Until Element Is Visible    ${btn_PayloadSelect}    ${TIMEOUT}
     Click Button    ${btn_PayloadSelect}
     
-    # 2. Cliquer sur le (+)
-    Wait Until Element Is Visible    ${btn_PlusDataDictionary}    ${TIMEOUT}
-    Click Element    ${btn_PlusDataDictionary}
+    # 2. Cliquer sur le (+) du dossier dynamique (ex: "Shared")
+    # On assemble le XPath avec la variable passée en argument
+    ${loc_FolderPlus}=    Set Variable    ${btn_AddFolder_Part1}${vDossier}${btn_AddFolder_Part2}
+    Wait Until Element Is Visible    ${loc_FolderPlus}    ${TIMEOUT}
+    Click Element    ${loc_FolderPlus}
 
     Sleep    1s    
 
     Click Button    ${btn_PopupOK}
-      Sleep    1s
-    # 5. Vérifier que le popup se ferme
-    Wait Until Element Is Not Visible    xpath=//div[contains(@class, 'object-finder')]    ${TIMEOUT}
+    Sleep    1s
 
 
 Configurer Planning
@@ -107,11 +126,16 @@ Valider Et Verifier Creation
     Wait Until Page Contains Element    ${link_JobInList_Part1}${vNomTache}${link_JobInList_Part2}    ${TIMEOUT}
 
 
-
+# --- MOT-CLÉ MAÎTRE MIS À JOUR ---
 Creer Une Tache De Replication Complete
-    [Arguments]    ${vNom}    ${vDesc}    ${vDate}    ${vHeure}    ${vNombre}    ${vUnite}
+    # On ajoute ${vDossier} dans les arguments attendus
+    [Arguments]    ${vNom}    ${vDesc}    ${vDossier}    ${vDate}    ${vHeure}    ${vNombre}    ${vUnite}
+    
     Click Element    ${btn_OuvrirFormulaire}
     Saisir Informations Generales    ${vNom}    ${vDesc}
-    Choisir Charge Utile Data Dictionary
+    
+    # On passe l'argument au sous-mot-clé
+    Choisir Dossier Charge Utile    ${vDossier}
+    
     Configurer Planning    ${vDate}    ${vHeure}    ${vNombre}    ${vUnite}
     Valider Et Verifier Creation    ${vNom}
