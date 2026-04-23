@@ -12,7 +12,7 @@ creation site
     # ${vNomSite}    : Nom affiché du site (ex: MonSite)
     # ${vNomURL}     : Identifiant URL du site, sans espaces (ex: mon-site)
     # ${vDescription}: Description du site
-    # ${vVisibilite} : Visibilité du site — valeurs possibles : PUBLIC, MODERATE, ListePrivee
+    # ${vVisibilite} : Visibilité du site — valeurs possibles : PUBLIC, MODERATED, PRIVATE
     # ${vTimeOut}    : Délai maximum d'attente des éléments (ex: 10s)
     [Arguments]    ${vNomSite}    ${vNomURL}    ${vDescription}    ${vVisibilite}    ${vTimeOut}
     # Attendre que le menu Sites soit visible et cliquer dessus
