@@ -1,4 +1,4 @@
-# Locators for formulaire de création d'événement dans alfresco
+## Locators for formulaire de création d'événement dans alfresco
 #choisir Date
 mois_année = "//div/a[@class='calnav']"
 choisir_mois = "//select[@id='calendar_nav_month']"
@@ -33,31 +33,32 @@ BTN_SAVE = "//button[contains(text(),'Enregistrer')]"
 
 *** Keywords ***
 Remplir Formulaire Evenement
-    [Arguments]    ${vquoi}    ${vlieu}    ${vdesc}    ${vJOURNEE_ENTIERE}    ${vheure_debut}    ${vheure_fin}    ${vANNEE}    
-    ...    ${vMOIS}    ${vJOUR}    ${vmois_voulu}    ${vmois_voulu}    ${vJOURfin}    ${vtag}
+    [Arguments]    ${vquoi}    ${vOU}    ${vdesc}    ${vvariable}    ${vheure_debut}    ${vheure_fin}    ${vANNEE_debut}    
+    ...    ${vMOIS_debut}    ${vJOUR_debut}    ${vmois_fin}    ${vJOURfin}    ${vtag}
     Go To    http://192.168.1.98/share/page/site/alfresco/calendar
-    choisir Date    ${vANNEE}    ${vMOIS}    ${vJOUR}
+    choisir Date    ${vANNEE_debut}    ${vMOIS_debut}    ${vJOUR_debut}
     Cliquer sur ajouter evenement
     
     Saisir Quoi           ${vquoi}
-    Saisir Lieu           ${vlieu}
+    Saisir Lieu           ${vOU}
     Saisir Description    ${vdesc}
-    saisir Heure de debut    ${vheure_debut}
-    Choisir Date fin     ${vmois_voulu}    ${vmois_voulu}    ${vJOURfin}    ${vheure_fin}
+    Cocher Journee Entiere    ${vvariable}    
+    saisir Heure de debut    ${vheure_debut}    ${vvariable}
+    Choisir Date fin     ${vmois_fin}    ${vJOURfin}    ${vheure_fin}    ${vvariable}
     ajouter un tag    ${vtag}
     Cliquer Enregistrer
 
 
 choisir Date
-    [Arguments]    ${vANNEE}    ${vMOIS}    ${vJOUR}
+    [Arguments]    ${vANNEE_debut}    ${vMOIS_debut}    ${vJOUR_debut}
     Click Element    ${mois_année}
     Wait Until Element Is Visible    ${choisir_mois}    10
-    Select From List By Value    ${choisir_mois}    ${vMOIS}
-    Input Text    ${input_année}    ${vANNEE}
+    Select From List By Value    ${choisir_mois}    ${vMOIS_debut}
+    Input Text    ${input_année}    ${vANNEE_debut}
     Click Button    ${BTN_OK}
     Wait Until Element Is Visible    //table[contains(@class,'yui-calendar')]    10s
-    Wait Until Element Is Visible    //table[contains(@class,'yui-calendar')]//a[normalize-space()='${vJOUR}']    10s
-    Click Element    //table[contains(@class,'yui-calendar')]//a[normalize-space()='${vJOUR}']
+    Wait Until Element Is Visible    //table[contains(@class,'yui-calendar')]//a[normalize-space()='${vJOUR_debut}']    10s
+    Click Element    //table[contains(@class,'yui-calendar')]//a[normalize-space()='${vJOUR_debut}']
 
 
 Cliquer sur ajouter evenement
@@ -71,8 +72,8 @@ Saisir Quoi
 
 
 Saisir Lieu
-    [Arguments]    ${vlieu}
-    Input Text    ${INPUT_LIEU}    ${vlieu}
+    [Arguments]    ${vOU}
+    Input Text    ${INPUT_LIEU}    ${vOU}
 
 
 Saisir Description
@@ -80,16 +81,24 @@ Saisir Description
     Input Text    ${INPUT_DESC}    ${vdesc}
 
 saisir Heure de debut
-    [Arguments]    ${vheure_debut}
-    Input Text    ${HEURE_DEBUT}    ${vheure_debut}
+    [Arguments]    ${vheure_debut}    ${vvariable}
+    IF    ${vvariable} == 0
+        Input Text    ${HEURE_DEBUT}    ${vheure_debut}
+    END
 
 # -- si on veut cocher la case journée entière, on ne remplit pas les champs d'heure de début et de fin
 Cocher Journee Entiere
-    Click Element    ${CHECKBOX_ALLDAY}
+    [Arguments]    ${vvariable}
+
+    IF    ${vvariable} == 1
+        Select Checkbox    ${CHECKBOX_ALLDAY}
+    ELSE
+        Unselect Checkbox    ${CHECKBOX_ALLDAY}
+    END    
 
 Choisir Date fin
 
-    [Arguments]    ${vmois_voulu}    ${vmois_voulu}    ${vJOURfin}    ${vheure_fin}
+    [Arguments]    ${vmois_fin}    ${vJOURfin}    ${vheure_fin}    ${vvariable}
 
     Click Element    ${DATE_FIN}
 
@@ -100,7 +109,7 @@ Choisir Date fin
     ${vmois_actuel}=    Get From List    ${vmois_actuel}    1
     ${vmois_actuel}=    Strip String    ${vmois_actuel}
 
-    WHILE    $vmois_actuel != $vmois_voulu
+    WHILE    $vmois_actuel != $vmois_fin
 
         Click Element    xpath=//a[@class='calnavright']
         Sleep    1s
@@ -111,8 +120,10 @@ Choisir Date fin
         ${vmois_actuel}=    Strip String    ${vmois_actuel}
 
     END
-    Click Element    xpath=//table[contains(@class,'yui-calendar')]//a[normalize-space()='${vJOURfin}']
-    Input Text    ${HEURE_FIN}    ${vheure_fin}  
+    Click Element    xpath=//table[contains(@class,'yui-calendar')]//a[normalize-space()='${vJOURfin}']  
+     IF    ${vvariable} == 0
+        Input Text    ${HEURE_FIN}    ${vheure_fin}  
+    END
 Cliquer Enregistrer
     Click Button    ${BTN_SAVE}
 
@@ -120,4 +131,3 @@ ajouter un tag
     [Arguments]    ${vtag}
     Input Text    ${input_tags}    ${vtag}
     Click Element    ${BTN_Ajouter}
-    
