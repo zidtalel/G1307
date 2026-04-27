@@ -5,7 +5,7 @@ input_Nom_site="//input[@class='dijitReset dijitInputInner' and @name='title' ]"
 input_Nom_URL="//input[@class='dijitReset dijitInputInner' and @name='shortName' ]"
 input_description="//textarea[@class='dijitTextBox dijitTextArea' and @name='description']"
 radio_visibilite="//input[@name='visibility' and @value='CHOIX']"
-btn_creer="//span[@id='CREATE_SITE_DIALOG_OK']"
+btn_creer="//span[@id='CREATE_SITE_DIALOG_OK_label']"
 page_titre_site="//a[@class='alfresco-navigation-_HtmlAnchorMixin' and @title='NOM']"
 
 creation site
